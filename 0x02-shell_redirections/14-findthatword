@@ -1,5 +1,5 @@
 #!/bin/bash
-grep -c "bin" /etc/passwd
+grep "root" /etc/passwd
 
 
 
