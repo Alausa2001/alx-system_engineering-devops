@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# This script is displaying "Best School" 10 times
+# This script is displays 1 - 20 and count 4 "bad luck from china is echoed"
+# at 9 "bad luck from japan is displayed"
+# at 17 "bad luck from italy is diplayed"
 i=1
 while [ $i -le 20 ];
 do
