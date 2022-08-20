@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script displays the pid of the files containing bash
+# shellcheck disable=SC2009
+ps -auxf | grep bash
