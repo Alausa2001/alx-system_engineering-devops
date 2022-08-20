@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# This script is displaying "Best School" 10 times
+# This script is displaying "Best School" if the count reaches 4 it "bad luck is printed
+# at 8 "good luck is printed
 i=1
 while [ $i -le 10 ];
 do
