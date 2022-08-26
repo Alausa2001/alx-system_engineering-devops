@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Listens on port 98 on localhost, the terminal on which this is run serves as the server side while other terminals can connect to it using telnet command.
+
+nc -l localhost 98
