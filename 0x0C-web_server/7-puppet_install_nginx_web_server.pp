@@ -1,8 +1,8 @@
 # configure nginx
 
 exec {'update':
-  command => 'sudo apt-get -y update',
-  path    => '/usr/bin/'
+  command  => 'sudo apt-get -y update',
+  provider => 'shell'
 }
 
 package {'nginx':
@@ -15,9 +15,10 @@ file {'index.html':
   content => 'Hello World!'
 }
 
-file_line {'redirect':
-  ensure            => 'present',
-  path              => '/etc/nginx/sites-available/default',
-  line              => 'rewrite ^/redirect_me https://www.github.com/Alausa2001 permanent;',
-  match_for_absence => 'true'
+$redirect = "\\\trewrite ^/redirect_me https://www.github.com/Alausa2001 permanent;"
+
+exec {'redirect':
+  user     => 'root',
+  command  => "sed -i '51i ${redirect}'  /etc/nginx/sites-available/default",
+  provider => 'shell'
 }
