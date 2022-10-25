@@ -4,15 +4,14 @@ exec { 'update':
   command => 'sudo apt-get -y upgrade'
 }
 
-package { 'nginx':
-  ensure   => 'installed',
-  provider => 'apt'
+exec { 'nginx':
+  command   => 'sudo apt-get -y install nginx'
 }
 
 file { 'index.html':
   path    => '/var/www/html/index.html',
   owner   => 'root',
-  comtent => 'Hello world'
+  comtent => 'Hello World!'
 }
 
 file_line { 'redirect':
