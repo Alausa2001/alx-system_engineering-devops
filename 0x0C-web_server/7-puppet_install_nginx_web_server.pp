@@ -1,11 +1,13 @@
 # configure nginx
 
 exec { 'update':
-  command => 'sudo apt-get -y upgrade'
+  command  => 'sudo apt-get -y upgrade',
+  provider => 'apt'
 }
 
 exec { 'nginx':
-  command   => 'sudo apt-get -y install nginx'
+  command  => 'sudo apt-get -y install nginx',
+  provider => 'apt'
 }
 
 file { 'index.html':
