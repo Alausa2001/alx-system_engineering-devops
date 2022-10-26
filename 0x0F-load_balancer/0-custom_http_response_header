@@ -8,16 +8,6 @@
 # The value of the custom HTTP header must be the hostname of the server Nginx is running on
 sudo apt-get -y update
 sudo apt-get -y install nginx
-sudo chown -R "$USER:$USER" /var/www/
-# redirection
-redirect="\\\trewrite ^/redirect_me https://www.github.com/Alausa2001 permanent;"
-sed -e "51i ${redirect}" -i /etc/nginx/sites-available/default
-echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html
-# error 404
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/error.html
-sudo sed -e "55i \\\terror_page 404 /error.html;" -i /etc/nginx/sites-available/default;
-sudo sed -e "56i \\\tlocation = /error.html {\n\t\troot /var/www/html;" -i /etc/nginx/sites-available/default;
-sudo sed -e "58i \\\t\tinternal;\n\t}" -i /etc/nginx/sites-available/default;
 sudo sed -e "52i \\\t\tadd_header X-Served-By '\$hostname';" -i /etc/nginx/sites-available/default;
 sudo service nginx restart
 sudo service nginx start
