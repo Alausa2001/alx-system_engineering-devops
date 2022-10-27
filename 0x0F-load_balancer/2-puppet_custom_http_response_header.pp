@@ -8,9 +8,9 @@ exec {'update':
 package {'nginx':
   ensure => 'installed'
 }
-
+$host = $hostname
 exec {'customheader':
-  command  => "sudo sed -e '52i \\\t\tadd_header X-Served-By ${hostname};' -i /etc/nginx/sites-available/default;",
+  command  => "sudo sed -e '52i \\\t\tadd_header X-Served-By ${host};' -i /etc/nginx/sites-available/default;",
   provider => 'shell'
 }
 
