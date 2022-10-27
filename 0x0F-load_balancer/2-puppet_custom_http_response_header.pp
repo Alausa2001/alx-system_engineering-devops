@@ -3,7 +3,7 @@
 exec {'update':
   command  => 'sudo apt-get -y update',
   provider => 'shell',
-  before => Exec['nginx']
+  before   => Package['nginx']
 }
 
 package {'nginx':
@@ -13,12 +13,12 @@ package {'nginx':
 $host = $hostname
 exec {'customheader':
   command  => "sudo sed -e '52i \\\t\tadd_header X-Served-By ${host};' -i /etc/nginx/sites-available/default;",
-  provider => 'shell'
-  before => Exec['restart']
+  provider => 'shell',
+  before   => Exec['restart']
 }
 
 exec {'restart':
-  user => root,
-  command  => 'sudo service nginx start',
+  user     => root,
+  command  => 'sudo service nginx restart',
   provider => 'shell'
 }
