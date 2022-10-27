@@ -2,16 +2,19 @@
 
 exec {'update':
   command  => 'sudo apt-get -y update',
-  provider => 'shell'
+  provider => 'shell',
+  before => Exec['nginx']
 }
 
 package {'nginx':
-  ensure => 'installed'
+  ensure => 'installed',
+  before => Exec['customheader']
 }
 $host = $hostname
 exec {'customheader':
   command  => "sudo sed -e '52i \\\t\tadd_header X-Served-By ${host};' -i /etc/nginx/sites-available/default;",
   provider => 'shell'
+  before => Exec['restart']
 }
 
 exec {'restart':
