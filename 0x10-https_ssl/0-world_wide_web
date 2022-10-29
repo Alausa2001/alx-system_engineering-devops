@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# configure your domain zone so that the subdomain www points to your load-balancer IP (lb-01). Let’s also add other subdomains to make our life easier, and write a Bash script that will display information about subdomains.
+
+# Requirements:
+
+# Add the subdomain www to your domain, point it to your lb-01 IP (your domain name might be configured with default subdomains, feel free to remove them)
+# Add the subdomain lb-01 to your domain, point it to your lb-01 IP
+# Add the subdomain web-01 to your domain, point it to your web-01 IP
+# Add the subdomain web-02 to your domain, point it to your web-02 IP
+# Your Bash script must accept 2 arguments:
+# domain:
+# type: string
+# what: domain name to audit
+# mandatory: yes
+# subdomain:
+# type: string
+# what: specific subdomain to audit
+# mandatory: no
+num=$#
+func () {
+	if (( num < 2 ))
+	then
+		domain_list=("www" "web-01" "web-02" "lb-01")
+		for i in "${domain_list[@]}"
+		do
+			domain=$i.$1
+
+			info=$(dig $domain)
+			subdomain=$(echo "$info" | grep -A1 'ANSWER SECTION' | tail -1 | awk '{split($0, a, "."); print a[1]}') 
+			record=$(echo "$info" | grep -A1 'ANSWER SECTION' | tail -1 | awk '{print $4}')
+			ip=$(echo "$info" | grep -A1 'ANSWER SECTION' | tail -1 | awk '{print $5}')
+			echo "The subdomain $subdomain is a $record record and points to $ip"
+		done
+	else
+		domain=$2.$1
+		info=$(dig $domain)
+		subdomain=$(echo "$info" | grep -A1 'ANSWER SECTION' | tail -1 | awk '{split($0, a, "."); print a[1]}')
+		record=$(echo "$info" | grep -A1 'ANSWER SECTION' | tail -1 | awk '{print $4}')
+		ip=$(echo "$info" | grep -A1 'ANSWER SECTION' | tail -1 | awk '{print $5}')
+		echo "The subdomain $subdomain is a $record record and points to $ip"
+	fi
+}
+
+func "$1" "$2"
