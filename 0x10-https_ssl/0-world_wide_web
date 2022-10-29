@@ -20,7 +20,7 @@ num=$#
 func () {
 	if (( num < 2 ))
 	then
-		domain_list=("www" "web-01" "web-02" "lb-01")
+		domain_list=("www" "lb-01" "web-01" "web-02")
 		for i in "${domain_list[@]}"
 		do
 			domain=$i.$1
