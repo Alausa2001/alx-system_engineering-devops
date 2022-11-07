@@ -35,7 +35,7 @@ defaults
 frontend http
         bind *:80
         mode http
-	http-request redirect scheme https code 301 unless { ssl_fc }
+	redirect scheme https code 301 unless { ssl_fc }
         default_backend feranmi_backend
 
 frontend https
