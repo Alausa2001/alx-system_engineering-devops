@@ -23,7 +23,7 @@ def getInfo():
     _file = '.'.join([str(info.get('id')), 'csv'])
 
     with open(_file, 'w') as csvfile:
-        username = info.get('name')
+        username = info.get('username')
         for todo in todos:
             _id = info.get('id')
             taskStatus = todo.get('completed')
