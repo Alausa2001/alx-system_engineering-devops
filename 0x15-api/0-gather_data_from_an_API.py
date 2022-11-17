@@ -18,8 +18,8 @@ Requirements:
     Second and N next lines display the title of completed tasks:
     TASK_TITLE (with 1 tabulation and 1 space before the TASK_TITLE)
 """
-from sys import argv as av
 import requests as req
+from sys import argv as av
 
 
 def getInfo():
@@ -38,7 +38,7 @@ def getInfo():
     print('Employee {} is done with tasks({}/{}):'
           .format(info['name'], count, allTodo))
     for task in completedTasks:
-        print('\t' + task)
+        print('\t ' + task)
 
 
 if __name__ == '__main__':
