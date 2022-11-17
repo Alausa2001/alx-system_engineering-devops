@@ -35,7 +35,7 @@ def getInfo():
         if todo['completed'] is True:
             count += 1
             completedTasks.append(todo['title'])
-    print('Employee {} is done with tasks({}/{})'
+    print('Employee {} is done with tasks({}/{}):'
           .format(info['name'], count, allTodo))
     for task in completedTasks:
         print('\t' + task)
