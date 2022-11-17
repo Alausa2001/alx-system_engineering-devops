@@ -18,8 +18,8 @@ Requirements:
     Second and N next lines display the title of completed tasks:
     TASK_TITLE (with 1 tabulation and 1 space before the TASK_TITLE)
 """
-import requests as req
 from sys import argv as av
+import requests as req
 
 
 def getInfo():
