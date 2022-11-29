@@ -12,7 +12,7 @@ def top_ten(subreddit):
                       .format(base, subreddit),
                       headers=header, allow_redirects=False)
     if respons.status_code != 200:
-        return 0
+        print(None)
     posts = respons.json().get('data').get('children')
     count = 0
     for post in posts:
