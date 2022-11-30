@@ -8,7 +8,7 @@ def top_ten(subreddit):
     """get the top 10 posts of a subreddit"""
     base = 'https://www.reddit.com'
     header = {'User-agent': 'a_oluwaferanmi'}
-    respons = req.get('{}/r/{}/top.json'
+    respons = req.get('{}/r/{}/hot.json'
                       .format(base, subreddit),
                       headers=header, allow_redirects=False)
     if respons.status_code != 200:
