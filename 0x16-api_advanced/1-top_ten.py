@@ -13,9 +13,10 @@ def top_ten(subreddit):
                       headers=header, allow_redirects=False)
     if respons.status_code != 200:
         print(None)
-    posts = respons.json().get('data').get('children')
-    count = 0
-    for post in posts:
-        if count <= 9:
-            print(post.get('data').get('title'))
-            count += 1
+    else:
+        posts = respons.json().get('data').get('children')
+        count = 0
+        for post in posts:
+            if count <= 9:
+                print(post.get('data').get('title'))
+                count += 1
