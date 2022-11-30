@@ -56,8 +56,8 @@ def count_words(subreddit, word_list, kw_dict={}, after=''):
                 kw_dict[key] = value + 1
 
     if _next is None:
-        sort = []
-
-        print(kw_dict)
+        sort = sorted(kw_dict, key=lambda x:x[1], reverse=True)
+        for key in sort:
+            print('{}: {}'.format(key, kw_dict[key]))
     if _next is not None:
         count_words(subreddit, word_list, kw_dict, _next)
