@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """queries Reddit API to get all hot articles of a subreddit"""
 
+
 import requests as req
 
 
