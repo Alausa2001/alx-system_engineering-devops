@@ -2,6 +2,6 @@
 # run the webserver(nginx) with a user without sudo permissions
 
 sed -i "s/80/8080/g" /etc/nginx/sites-available/default
-chown nginx /etc/nginx/nginx.conf
-chmod 700 /etc/nginx/nginx.conf*
+sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
+chmod 007 /etc/nginx/nginx.conf*
 sudo -u nginx service nginx start
