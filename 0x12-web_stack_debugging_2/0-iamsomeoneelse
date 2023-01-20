@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # switch to a new user
 
-su -c "$1"
-whoami
+sudo -u "$1" whoami
