@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# comment
+var=3
+case $var in
+	"4") echo "what";;
+	"3") echo "why";;
+esac
+

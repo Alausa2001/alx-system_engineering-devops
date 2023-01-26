@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # mysql backup
-mysqldump -uroot --all-databases -p"$1" > backup.sql
-tar -cvzf $(date +"%d-%m-%Y".tar.gz) backup.sql
+sudo mysqldump -uroot salvator_db -p > backup.sql
+tar -czf $(date +"%d-%m-%Y".tar.gz) backup.sql 4-mysql_configuration_replica

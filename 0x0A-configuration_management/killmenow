@@ -1,0 +1,7 @@
+#!/bin/bash
+while [[ true ]]
+do
+	sleep 6
+done
+
+root@d391259bf577:/# ./killmenow
